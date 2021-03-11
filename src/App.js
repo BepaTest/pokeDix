@@ -5,12 +5,12 @@ import PokeDix from './pages/PokeDix'
 import DixTeam from './pages/DixTeam'
 import Pokemon from './pages/Pokemon'
 //navbar
-import Navbar from './components/Navbar'
+import Navigation from './components/Navbar'
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navigation />
       <Switch>
         <Route exact path='/'>
           <PokeDix />
