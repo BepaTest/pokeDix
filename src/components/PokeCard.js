@@ -1,13 +1,13 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-function PokeCard(pokemon) {
-  console.log(pokemon)
+function PokeCard(props) {
+  console.log(props.pokemon)
   return (
     <Card bg='primary' text='light'>
-      <Card.Header>{pokemon.pokemon.name}</Card.Header>
+      <Card.Header>{props.pokemon.name}</Card.Header>
       <Card.Body>
-        <Card.Title>{pokemon.pokemon.name} </Card.Title>
+        <Card.Title>{props.pokemon.name} </Card.Title>
         <Card.Text>Bla</Card.Text>
       </Card.Body>
     </Card>

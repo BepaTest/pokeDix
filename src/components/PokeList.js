@@ -6,7 +6,7 @@ function PokeList({ pokemon }) {
   console.log(pokemon)
   return (
     <div>
-      <CardColumns>
+      <CardColumns className='card-columns-number'>
         {pokemon.map((pok) => (
           <PokeCard key={pok.name} pokemon={pok}></PokeCard>
         ))}
