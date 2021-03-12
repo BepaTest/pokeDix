@@ -3,7 +3,7 @@ import { CardColumns } from 'react-bootstrap'
 import PokeCard from './PokeCard'
 
 function PokeList({ pokemon }) {
-  console.log(pokemon)
+  //   console.log(pokemon)
   return (
     <div>
       <CardColumns className='card-columns-number'>

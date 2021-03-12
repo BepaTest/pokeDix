@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PokeList from '../components/PokeList'
 import axios from 'axios'
-import Pagination from '../components/Pagination'
+import PaginationDex from '../components/PaginationDex'
 
 function PokeDix() {
   const [pokemon, setPokemon] = useState([])
@@ -10,6 +10,7 @@ function PokeDix() {
   )
   const [nextPageUrl, setNextPageUrl] = useState()
   const [prevPageUrl, setPrevPageUrl] = useState()
+  const [pageNumber, setPageNumber] = useState(1)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -31,10 +32,12 @@ function PokeDix() {
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl)
+    setPageNumber((prevPageNumber) => prevPageNumber + 1)
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl)
+    setPageNumber((prevPageNumber) => prevPageNumber - 1)
   }
 
   if (loading) return 'Loading...'
@@ -42,9 +45,10 @@ function PokeDix() {
   return (
     <>
       <PokeList pokemon={pokemon} />
-      <Pagination
+      <PaginationDex
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+        pageNumber={pageNumber}
       />
     </>
   )
