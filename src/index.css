@@ -24,7 +24,7 @@ code {
     column-count: 4 !important;
   }
 }
-@media (max-width: 34em) {
+@media (max-width: 45em) {
   .card-columns {
     column-count: 2 !important;
   }

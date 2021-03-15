@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PokeList from '../components/PokeList'
 import axios from 'axios'
 import PaginationDex from '../components/PaginationDex'
+import PokeFilter from '../components/PokeFilter'
 
 function PokeDix() {
   const [pokemon, setPokemon] = useState([])
@@ -12,6 +13,7 @@ function PokeDix() {
   const [prevPageUrl, setPrevPageUrl] = useState()
   const [pageNumber, setPageNumber] = useState(1)
   const [loading, setLoading] = useState(true)
+  const [isNotFiltered, setIsNotFiltered] = useState(true)
 
   useEffect(() => {
     setLoading(true)
@@ -40,16 +42,32 @@ function PokeDix() {
     setPageNumber((prevPageNumber) => prevPageNumber - 1)
   }
 
+  function showFilteredPokemon(newPokArray) {
+    setPokemon(newPokArray)
+    setIsNotFiltered(false)
+    console.log()
+  }
+
   if (loading) return 'Loading...'
 
   return (
     <>
+      <PokeFilter filterPokemons={showFilteredPokemon} />
+      {isNotFiltered ? (
+        <PaginationDex
+          gotoNextPage={nextPageUrl ? gotoNextPage : null}
+          gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+          pageNumber={pageNumber}
+        />
+      ) : null}
       <PokeList pokemon={pokemon} />
-      <PaginationDex
-        gotoNextPage={nextPageUrl ? gotoNextPage : null}
-        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-        pageNumber={pageNumber}
-      />
+      {isNotFiltered ? (
+        <PaginationDex
+          gotoNextPage={nextPageUrl ? gotoNextPage : null}
+          gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+          pageNumber={pageNumber}
+        />
+      ) : null}
     </>
   )
 }
