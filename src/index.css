@@ -14,18 +14,22 @@ code {
 
 /*NUMBER OF CARDS PER COLUMN ON POKEDIX*/
 @media (min-width: 62em) {
-  .card-columns-number {
+  .card-group {
     column-count: 5 !important;
   }
 }
 
 @media (max-width: 62em) {
-  .card-columns {
+  .card-group {
     column-count: 4 !important;
   }
 }
 @media (max-width: 45em) {
-  .card-columns {
+  .card-group {
     column-count: 2 !important;
   }
+}
+/*CARD STYLE*/
+.card-margin {
+  margin-bottom: 1em;
 }

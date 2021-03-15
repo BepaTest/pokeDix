@@ -11,13 +11,14 @@ function PokeCard(props) {
   }
 
   return (
-    <Card bg='primary' text='light'>
+    <Card className='card-margin' bg='primary' text='light'>
       <Card.Header>{pokemonIndex}</Card.Header>
+
+      <Card.Img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`}
+        onError={addDefaultSrc}
+      />
       <Card.Body>
-        <Card.Img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`}
-          onError={addDefaultSrc}
-        />
         <Card.Title>{props.pokemon.name} </Card.Title>
       </Card.Body>
     </Card>

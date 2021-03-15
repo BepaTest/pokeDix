@@ -1,17 +1,19 @@
 import React from 'react'
-import { CardColumns } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import PokeCard from './PokeCard'
 
 function PokeList({ pokemon }) {
   //   console.log(pokemon)
   return (
-    <div>
-      <CardColumns className='card-columns-number'>
+    <Container fluid>
+      <Row lg={5} md={4} sm={2} xs={1}>
         {pokemon.map((pok) => (
-          <PokeCard key={pok.name} pokemon={pok}></PokeCard>
+          <Col>
+            <PokeCard key={pok.name} pokemon={pok}></PokeCard>
+          </Col>
         ))}
-      </CardColumns>
-    </div>
+      </Row>
+    </Container>
   )
 }
 
