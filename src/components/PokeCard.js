@@ -2,17 +2,21 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 
 function PokeCard(props) {
-  //   console.log(props.pokemon)
   const pokemonIndex = props.pokemon.url.split('/')[
     props.pokemon.url.split('/').length - 2
   ]
+  // in case official-artwork image link does not exist
+  function addDefaultSrc(ev) {
+    ev.target.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`
+  }
+
   return (
     <Card bg='primary' text='light'>
       <Card.Header>{pokemonIndex}</Card.Header>
       <Card.Body>
         <Card.Img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`}
-          //or "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10217.png",
+          onError={addDefaultSrc}
         />
         <Card.Title>{props.pokemon.name} </Card.Title>
       </Card.Body>
