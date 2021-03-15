@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PokeList from '../components/PokeList'
 import axios from 'axios'
 import PaginationDex from '../components/PaginationDex'
+import PokeFilter from '../components/PokeFilter'
 
 function PokeDix() {
   const [pokemon, setPokemon] = useState([])
@@ -40,10 +41,15 @@ function PokeDix() {
     setPageNumber((prevPageNumber) => prevPageNumber - 1)
   }
 
+  function showFilteredPokemon(newPokArray) {
+    setPokemon(newPokArray)
+  }
+
   if (loading) return 'Loading...'
 
   return (
     <>
+      <PokeFilter filterPokemons={showFilteredPokemon} />
       <PokeList pokemon={pokemon} />
       <PaginationDex
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
