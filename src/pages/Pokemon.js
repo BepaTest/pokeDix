@@ -31,8 +31,8 @@ function Pokemon(props) {
 
   if (loading) return 'Loading...'
   return (
-    <>
-      <Card>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Card style={{ width: '60%' }}>
         <Card.Header>
           {pokemonInfo.id}
           {pokemonInfo.types.map((t) => (
@@ -52,12 +52,12 @@ function Pokemon(props) {
             Poids: {pokemonInfo.weight}
           </Card.Text>
           {pokemonInfo.stats.map((s) => (
-            <>
+            <div key={`${s.stat.name}-${s.base_stat}`}>
               <p>{s.stat.name.toUpperCase()}:</p>
 
-              <ProgressBar now={s.base_stat} label={`${s.base_stat}%`} />
+              <ProgressBar now={s.base_stat} label={`${s.base_stat}%    `} />
               <br />
-            </>
+            </div>
           ))}
 
           <br />
@@ -65,7 +65,7 @@ function Pokemon(props) {
         </Card.Body>
         <Card.Footer className='text-muted'></Card.Footer>
       </Card>
-    </>
+    </div>
   )
 }
 
