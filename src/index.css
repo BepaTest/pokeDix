@@ -33,3 +33,8 @@ code {
 .card-margin {
   margin-bottom: 1em;
 }
+
+/*SINGLE POKEMON CARD STYLE*/
+.singlePokImg {
+  width: 20% !important;
+}

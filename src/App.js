@@ -18,7 +18,7 @@ function App() {
         <Route path='/team'>
           <DixTeam />
         </Route>
-        <Route path='/pokemon/:id' children={<Pokemon />}></Route>
+        <Route path='/pokemon/:name' component={Pokemon}></Route>
       </Switch>
     </Router>
   )

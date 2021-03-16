@@ -45,7 +45,6 @@ function PokeDix() {
   function showFilteredPokemon(newPokArray) {
     setPokemon(newPokArray)
     setIsNotFiltered(false)
-    console.log()
   }
 
   if (loading) return 'Loading...'
