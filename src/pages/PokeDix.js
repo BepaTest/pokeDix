@@ -61,27 +61,35 @@ function PokeDix() {
 
   return (
     <>
-      <PokeFilter filterPokemons={showFilteredPokemon} />
+      <h1 className='title'>Liste des Pokémon</h1>
+      <div className='filter-container'>
+        <PokeFilter filterPokemons={showFilteredPokemon} />
+      </div>
       {isNotFiltered ? (
-        <PaginationDex
-          gotoNextPage={nextPageUrl ? gotoNextPage : null}
-          gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-          pageNumber={pageNumber}
-        />
+        <div className='filter-container'>
+          <PaginationDex
+            gotoNextPage={nextPageUrl ? gotoNextPage : null}
+            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+            pageNumber={pageNumber}
+          />
+        </div>
       ) : null}
+
       {PokeList({
         pokemons,
         capture,
         release,
         capturedPokemons,
       })}
-      {isNotFiltered ? (
-        <PaginationDex
-          gotoNextPage={nextPageUrl ? gotoNextPage : null}
-          gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-          pageNumber={pageNumber}
-        />
-      ) : null}
+      <div className='filter-container'>
+        {isNotFiltered ? (
+          <PaginationDex
+            gotoNextPage={nextPageUrl ? gotoNextPage : null}
+            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+            pageNumber={pageNumber}
+          />
+        ) : null}
+      </div>
     </>
   )
 }

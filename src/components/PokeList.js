@@ -15,7 +15,8 @@ function PokeList({ pokemons, capture, release, capturedPokemons }) {
                 key={pok.name}
                 pokemon={pok}
                 onClick={release}
-                buttonLabel='-'
+                buttonLabel='Virer de mon équipe'
+                variant='danger'
               ></PokeCard>
             </Col>
           ) : (
@@ -24,7 +25,8 @@ function PokeList({ pokemons, capture, release, capturedPokemons }) {
                 key={pok.name}
                 pokemon={pok}
                 onClick={capture}
-                buttonLabel='+'
+                buttonLabel='Ajouter à mon équipe'
+                variant='success'
               ></PokeCard>
             </Col>
           )

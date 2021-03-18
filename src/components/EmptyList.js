@@ -9,15 +9,10 @@ function EmptyList({ capturedPokemons }) {
     <Container fluid>
       <Row lg={6} md={3} sm={2} xs={2}>
         {emptyArr.map((slot) => (
-          <Col key={slot.index}>
+          <Col key={slot}>
             <Link to='/'>
-              <Card
-                bg='dark'
-                style={{ height: '18rem' }}
-                className='card-margin'
-                text='light'
-              >
-                <Card.Body>
+              <Card bg='dark' className='emptyCard-margin' text='light'>
+                <Card.Body className='emptyCard-body'>
                   <Card.Text>
                     Il faut cliquer ici ou sur PokeDix pour attraper des
                     pokémons

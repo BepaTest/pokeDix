@@ -8,7 +8,7 @@ function DixTeam() {
   console.log('DixTeam: capturedPokemons', capturedPokemons)
   return (
     <div>
-      <h1>MY TEAM</h1>
+      <h1 className='title'>Mon équipe</h1>
       {PokeList({
         pokemons: capturedPokemons,
         capturedPokemons: capturedPokemons,

@@ -67,12 +67,12 @@ function Pokemon(props) {
           {capturedPokemons.some(
             (capturedPok) => capturedPok.name === pokemonInfo.name
           ) ? (
-            <Button variant='light' onClick={release(pokemonInfo)}>
-              -
+            <Button variant='danger' onClick={release(pokemonInfo)}>
+              Virer de mon équipe
             </Button>
           ) : (
-            <Button variant='light' onClick={capture(pokemonInfo)}>
-              +
+            <Button variant='success' onClick={capture(pokemonInfo)}>
+              Ajouter à mon équipe
             </Button>
           )}
         </Card.Body>

@@ -12,7 +12,24 @@ code {
     monospace;
 }
 
-/*NUMBER OF CARDS PER COLUMN ON POKEDIX*/
+/*NAVBAR*/
+.nav-links {
+  margin: 1rem;
+}
+
+/*PAGE TITLE*/
+.title {
+  margin: 2rem;
+  text-align: center;
+}
+/*POKEDIX PAGE*/
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+/*number of cards per column*/
 @media (min-width: 62em) {
   .card-group {
     column-count: 5 !important;
@@ -29,9 +46,28 @@ code {
     column-count: 2 !important;
   }
 }
-/*CARD STYLE*/
+
+/*CARD FOR LIST OF POKEMONS*/
 .card-margin {
   margin-bottom: 1em;
+}
+.white-color {
+  color: white;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+
+/*TEAM PAGE*/
+/*Empty card style*/
+.emptyCard-margin {
+  margin-bottom: 1em;
+  height: 18rem;
+}
+.emptyCard-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*SINGLE POKEMON CARD STYLE*/

@@ -15,10 +15,16 @@ const Navigation = () => {
             alt='React Bootstrap logo'
           />
         </Navbar.Brand>
-        <Nav className='mr-auto'>
-          <Link to='/'>PokeDix</Link>
-          <Link to='/team'>Dix Team</Link>
-        </Nav>
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto'>
+            <Link to='/' className='nav-links'>
+              PokeDix
+            </Link>
+            <Link to='/team' className='nav-links'>
+              Dix Team
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     </>
   )
