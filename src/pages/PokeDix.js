@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PokeList from '../components/PokeList'
 import axios from 'axios'
 import PaginationDex from '../components/PaginationDex'
 import PokeFilter from '../components/PokeFilter'
+import { PokemonContext } from '../components/PokemonContext'
 
 function PokeDix() {
-  const [pokemon, setPokemon] = useState([])
   const [currentPageUrl, setCurrentPageUrl] = useState(
     'https://pokeapi.co/api/v2/pokemon'
   )
@@ -26,11 +26,19 @@ function PokeDix() {
         setLoading(false)
         setNextPageUrl(res.data.next)
         setPrevPageUrl(res.data.previous)
-        setPokemon(res.data.results.map((p) => p))
+        addPokemons(res.data.results)
       })
 
     return () => cancel()
   }, [currentPageUrl])
+
+  const {
+    pokemons,
+    addPokemons,
+    capturedPokemons,
+    capture,
+    release,
+  } = useContext(PokemonContext)
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl)
@@ -43,11 +51,13 @@ function PokeDix() {
   }
 
   function showFilteredPokemon(newPokArray) {
-    setPokemon(newPokArray)
+    addPokemons(newPokArray)
     setIsNotFiltered(false)
   }
 
   if (loading) return 'Loading...'
+  console.log('PokeDix: pokemons', pokemons)
+  console.log('PokeDix: capturedPokemons ', capturedPokemons)
 
   return (
     <>
@@ -59,7 +69,12 @@ function PokeDix() {
           pageNumber={pageNumber}
         />
       ) : null}
-      <PokeList pokemon={pokemon} />
+      {PokeList({
+        pokemons,
+        capture,
+        release,
+        capturedPokemons,
+      })}
       {isNotFiltered ? (
         <PaginationDex
           gotoNextPage={nextPageUrl ? gotoNextPage : null}

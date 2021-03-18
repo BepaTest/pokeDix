@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
   return (
@@ -15,8 +16,8 @@ const Navigation = () => {
           />
         </Navbar.Brand>
         <Nav className='mr-auto'>
-          <Nav.Link href='/'>PokeDix</Nav.Link>
-          <Nav.Link href='/team'>Dix Team</Nav.Link>
+          <Link to='/'>PokeDix</Link>
+          <Link to='/team'>Dix Team</Link>
         </Nav>
       </Navbar>
     </>
