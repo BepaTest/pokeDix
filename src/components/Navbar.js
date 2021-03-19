@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <>
       <Navbar bg='dark' variant='dark'>
-        <Navbar.Brand href='/'>
+        {/* <Navbar.Brand href='/'>
           <img
             src='/img/pokeball.png'
             width='30'
@@ -14,7 +14,7 @@ const Navigation = () => {
             className='d-inline-block align-top'
             alt='React Bootstrap logo'
           />
-        </Navbar.Brand>
+        </Navbar.Brand> */}
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <Link to='/' className='nav-links'>
