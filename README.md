@@ -1,6 +1,6 @@
 # PokeDix
 
-Projet React JS - test technique Pokémon pour la société Dixeed. Utilisation d'un API publique: [pokeapi](: https://pokeapi.co/)
+Projet React JS - test technique Pokémon pour la société Dixeed. Utilisation d'un API publique: [pokeapi](https://pokeapi.co/)
 
 ## Des éléments réalisés:
 
