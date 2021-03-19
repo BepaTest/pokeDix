@@ -12,7 +12,7 @@ import { PokemonProvider } from './components/PokemonContext'
 function App() {
   return (
     <PokemonProvider>
-      <Router>
+      <Router basename='/pokeDix'>
         <Navigation />
         <Switch>
           <Route exact path='/' component={PokeDix}></Route>
