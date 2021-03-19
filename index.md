@@ -1,33 +1,32 @@
 ## PokeDix Project
 
-### Markdown
+Projet React JS - test technique Pokémon pour la société Dixeed. Utilisation d'un API publique: [pokeapi](https://pokeapi.co/)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Des éléments réalisés:
 
-```markdown
-Syntax highlighted code block
+- Une page d'accueil avec la liste des pokémons. La liste est paginée. On peut filtrer les pokémons par type de pokemon.
+- Une page de détails de pokémon. On y accéde en cliquant sur un des pokémons sur la page d'acceuil.
+- Une page de composition d'équipes. Une équipe est composée de 6 slots.
+- Une possibilité de choisir des pokémons qu'on veut ajouter
+  dans son équipe ainsi que de l'enlever de son équipe.
 
-# Header 1
-## Header 2
-### Header 3
+## Des éléments non réalisés:
 
-- Bulleted
-- List
+- Une possibilitée d'ordonner les pokémons
 
-1. Numbered
-2. List
+## Bonus
 
-**Bold** and _Italic_ and `Code` text
+- Une avertissement dès que l'équipe est au complet
+- Possibilitée de chercher des pokémons par nom
 
-[Link](url) and ![Image](src)
-```
+## Sources
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Pagination:
+https://github.com/WebDevSimplified/React-Pokemon-Pagination
 
-### Jekyll Themes
+Désign et couleurs:
+https://github.com/matheusmhq/pokedex-react-js
+https://info343-su18.github.io/data-explorer-fuwil16/
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BepaTest/pokeDix/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Context:
+https://www.freecodecamp.org/news/building-a-simple-pokemon-web-app-with-react-hooks-and-context-api/
