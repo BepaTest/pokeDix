@@ -14,6 +14,7 @@ function PokeDix() {
   const [pageNumber, setPageNumber] = useState(1)
   const [loading, setLoading] = useState(true)
   const [isNotFiltered, setIsNotFiltered] = useState(true)
+  const [isSearched, setIsSearched] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -55,25 +56,51 @@ function PokeDix() {
     setIsNotFiltered(false)
   }
 
+  const onChangeForm = (e) => {
+    e.preventDefault()
+    getPokemon(e.target.value.toLowerCase())
+    e.target.value
+      ? setIsSearched(true)
+      : setIsSearched(false) && setCurrentPageUrl(nextPageUrl)
+  }
+
+  function getPokemon(text) {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1118`).then((res) => {
+      addPokemons(res.data.results.filter((pok) => pok.name.includes(text)))
+    })
+  }
+
+  const Pagination = isNotFiltered ? (
+    <div className='filter-container'>
+      <PaginationDex
+        gotoNextPage={nextPageUrl ? gotoNextPage : null}
+        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+        pageNumber={pageNumber}
+      />
+    </div>
+  ) : null
+
   if (loading) return 'Loading...'
-  console.log('PokeDix: pokemons', pokemons)
-  console.log('PokeDix: capturedPokemons ', capturedPokemons)
 
   return (
     <>
       <h1 className='title'>Liste des Pokémon</h1>
       <div className='filter-container'>
-        <PokeFilter filterPokemons={showFilteredPokemon} />
+        <input
+          type='text'
+          placeholder='Chercher un Pokémon'
+          className='mr-sm-2'
+          onChange={onChangeForm}
+        />
       </div>
-      {isNotFiltered ? (
-        <div className='filter-container'>
-          <PaginationDex
-            gotoNextPage={nextPageUrl ? gotoNextPage : null}
-            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-            pageNumber={pageNumber}
-          />
+      {isSearched ? null : (
+        <div>
+          <div className='filter-container'>
+            <PokeFilter filterPokemons={showFilteredPokemon} />
+          </div>
+          {Pagination}
         </div>
-      ) : null}
+      )}
 
       {PokeList({
         pokemons,
@@ -81,15 +108,7 @@ function PokeDix() {
         release,
         capturedPokemons,
       })}
-      <div className='filter-container'>
-        {isNotFiltered ? (
-          <PaginationDex
-            gotoNextPage={nextPageUrl ? gotoNextPage : null}
-            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-            pageNumber={pageNumber}
-          />
-        ) : null}
-      </div>
+      <div className='filter-container'>{isSearched ? null : Pagination}</div>
     </>
   )
 }

@@ -6,7 +6,6 @@ export default function PaginationDex({
   gotoPrevPage,
   pageNumber,
 }) {
-  console.log('Page:', pageNumber)
   return (
     <div>
       <Pagination>
