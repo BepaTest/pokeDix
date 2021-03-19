@@ -18,6 +18,7 @@ Projet React JS - test technique Pokémon pour la société Dixeed. Utilisation 
 
 - Une avertissement dès que l'équipe est au complet
 - Possibilitée de chercher des pokémons par nom
+    Limitation: suite à la supression d'une recherche le pagination ne s'affiche pas correctement
 
 ## Sources
 
@@ -30,3 +31,5 @@ https://info343-su18.github.io/data-explorer-fuwil16/
 
 Context:
 https://www.freecodecamp.org/news/building-a-simple-pokemon-web-app-with-react-hooks-and-context-api/
+
+[DEMO](https://bepatest.github.io/pokeDix/)
