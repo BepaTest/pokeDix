@@ -16,7 +16,6 @@ function Pokemon(props) {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
-        console.log('RES', res.data)
         setPokemonInfo(res.data)
         setLoading(false)
       })
@@ -24,7 +23,7 @@ function Pokemon(props) {
         console.log('PokemonError', err)
       })
     return () => cancel()
-  }, [])
+  }, [setPokemonInfo])
 
   // in case official-artwork image link does not exist
   function addDefaultSrc(e) {
@@ -34,25 +33,36 @@ function Pokemon(props) {
   if (loading) return 'Loading...'
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <Card style={{ width: '60%' }}>
+    <div className='cardContainer'>
+      <Card className='bigCardWidth'>
         <Card.Header>
           {pokemonInfo.id}
           {pokemonInfo.types.map((t) => (
-            <p key={t.slot}>{t.type.name}</p>
+            <div key={t.slot} className={`typeDiv ${t.type.name}`}>
+              <p>{t.type.name}</p>
+            </div>
           ))}
         </Card.Header>
-        <Card.Img
-          className='singlePokImg'
-          variant='top'
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`}
-          onError={addDefaultSrc}
-        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '1rem',
+          }}
+        >
+          <Card.Img
+            className={`singlePokImg ${pokemonInfo.types[0].type.name}`}
+            variant='top'
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`}
+            onError={addDefaultSrc}
+          />
+        </div>
+
         <Card.Body className='text-center'>
           <Card.Title>{pokemonInfo.name.toUpperCase()}</Card.Title>
           <Card.Text>
-            Hauteur: {pokemonInfo.height} <br />
-            Poids: {pokemonInfo.weight}
+            Hauteur: {`${pokemonInfo.height}` * 10} cm <br />
+            Poids: {`${pokemonInfo.weight}` / 10} kg
           </Card.Text>
           {pokemonInfo.stats.map((s) => (
             <div key={`${s.stat.name}-${s.base_stat}`}>
@@ -68,7 +78,7 @@ function Pokemon(props) {
             (capturedPok) => capturedPok.name === pokemonInfo.name
           ) ? (
             <Button variant='danger' onClick={release(pokemonInfo)}>
-              Virer de mon équipe
+              Enlever de mon équipe
             </Button>
           ) : (
             <Button variant='success' onClick={capture(pokemonInfo)}>
